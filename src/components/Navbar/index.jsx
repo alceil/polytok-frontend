@@ -3,7 +3,10 @@ import NavItem from './NavItem'
 import './styles.css'
 import {BiHome,BiUser,BiCog} from 'react-icons/bi';
 import AuthButton from './AuthButton';
+import NavUserDetails from './NavUserDetails';
+import { useSelector } from "react-redux";
 const Navbar = () => {
+  const isUserLoggedIn = useSelector((state) => state.isUserLoggedIn);
   return (
     <div class="sidebar">
       <img src="https://bit.ly/3dPwSv9" alt="Logo" width="50px"/>
@@ -12,7 +15,10 @@ const Navbar = () => {
 <NavItem icon={<BiUser />} name="Profile"/>
 <NavItem icon={<BiUser />} name="Notifications"/>
 <NavItem icon={<BiCog />} name="Settings"/>
-<AuthButton/>
+{
+isUserLoggedIn?<NavUserDetails/>:<AuthButton/>
+
+}
       {/* <div class="sidebarRow">
         <span class="material-icons">people</span>
         <h4>Profile</h4>

@@ -4,10 +4,11 @@
 }
 
 .auth-btn{
-    margin-left: .7rem;
     background-color: #582be8;
     border-color: #582be8;
     color: #ffff;
-    border-radius: 2px;
+    margin-left: .7rem;
+    border-radius: 0.2rem;
     padding: 0.875rem 1.5rem;
+    font-weight: 600;
 }

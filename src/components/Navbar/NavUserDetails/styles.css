@@ -1,0 +1,21 @@
+.author_details {
+    display: flex;
+    align-items: center;
+  }
+  
+  .username {
+    margin-left: 10px;
+  }
+  .userid {
+    position: relative;
+    bottom: 25px;
+    color: #68778d;
+  }
+
+
+  .profilepic {
+    margin-left: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 45px;
+  }
