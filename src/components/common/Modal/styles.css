@@ -1,0 +1,33 @@
+.modal-bg{
+    top:0;
+    left: 0;
+    background-color: rgba(15, 15, 15, 0.7);
+    position: fixed;
+    width: 100vw;
+    z-index: 49;
+    height: 100vh;
+}
+
+.modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 50;
+    background-color: #ffff;
+    width: 80vw;
+    max-width: 50rem;
+    border-radius: .5rem;
+    transform: translate(-50%, -50%);
+}
+
+.modal-close{
+    position: absolute;
+    right: 0px;
+    padding: .75rem;
+    font-size: 1.75rem;
+}
+
+.modal-body{
+   max-height: 100%;
+
+}
