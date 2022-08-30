@@ -31,7 +31,7 @@ const LoginModal = () => {
 <TextInput
                  label="Password"
                  />
-<Button>
+<Button >
     Log in
 </Button>
 

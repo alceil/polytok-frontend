@@ -1,6 +1,13 @@
 import React from 'react'
 import './styles.css'
+import { useSelector } from "react-redux";
 const NavUserDetails = () => {
+
+  const user = useSelector((state) => state.user);
+
+console.log("User")
+console.log(user)
+
   return (
     <div class="author_details">
     <img
@@ -9,7 +16,7 @@ const NavUserDetails = () => {
       alt="profilepic"
     />
     <div class="username">
-      <h6>Ashish Thomas</h6>
+      <h6>{user.firstname??""}</h6>
       <span class="userid">@alceil</span>
     </div>
   </div>

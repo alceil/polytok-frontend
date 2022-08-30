@@ -7,6 +7,7 @@ import NavUserDetails from './NavUserDetails';
 import { useSelector } from "react-redux";
 const Navbar = () => {
   const isUserLoggedIn = useSelector((state) => state.isUserLoggedIn);
+
   return (
     <div class="sidebar">
       <img src="https://bit.ly/3dPwSv9" alt="Logo" width="50px"/>

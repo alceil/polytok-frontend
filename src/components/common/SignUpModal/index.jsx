@@ -5,13 +5,20 @@ import TextInput from '../TextInput'
 import './styles.css'
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux";
-import {  signupmodalclose } from '../../../redux/actions/auth.action'
+import {  signup, signupmodalclose } from '../../../redux/actions/auth.action'
+import { useState } from "react";
 const SignUpModal = () => {
   const isSignUpModalVisible = useSelector((state) => state.isSignUpModalVisible);
   console.log("SignupModal")
   console.log(isSignUpModalVisible)
   const dispatch = useDispatch();
-    const handleSignUpSubmit=()=>{
+
+  const [firstname, setFirstname] = useState("");
+    const handleSignUpSubmit=(e)=>{
+      e.preventDefault();
+
+      dispatch(signup({firstname}))
+      dispatch(signupmodalclose())
     }
 
     const handleModalClose = () => {
@@ -33,6 +40,8 @@ const SignUpModal = () => {
                 <TextInput
                 className="first-name"
                  label="First Name"
+                 value={firstname}
+                 onChange={(e) => setFirstname(e.target.value)}
                  />
                 <TextInput
                 className="last-name"
@@ -43,7 +52,7 @@ const SignUpModal = () => {
 <TextInput
                  label="Password"
                  />
-<Button>
+<Button onClick={(e) => handleSignUpSubmit(e)} >
     Join Polytok
 </Button>
 
