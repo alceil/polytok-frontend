@@ -1,0 +1,26 @@
+.theme-control-card{
+    background-color: #ffff;
+    border-radius: 1.3rem;
+    padding: 2.5rem;
+}
+
+h3{
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 1.6rem;
+}
+
+.button-grp{
+    display: flex;
+}
+
+.dark-mode-toggle-btn{
+    background-color: #EFF1FD;
+    padding: 1rem;
+    margin-left: 1rem;
+    border-radius: .6rem;
+    font-size: 2rem;
+    color: #68778D;
+}
+
+
