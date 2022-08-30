@@ -1,0 +1,45 @@
+.user-profile-card{
+   border-radius: 1.3rem;
+   width: 100%;
+   background-color: #3e2ed9;
+}
+.cover-image{
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    height: 20rem;
+    object-fit: cover;
+    width: 100%;
+}
+
+.user-profile-card-middle{
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.profile-image{
+    margin-left: 10px;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    position: relative;
+    bottom:25px;
+    border: .4rem solid white;
+}
+
+.edit-btn{
+    height: 40px;
+    width: 100px;
+    color: #3e2ed9;
+    font-weight: 600;
+    background-color: #e9e8fc;
+}
+
+.button-grp{
+    display: flex;
+    align-items: center;
+}
+
+h3{
+    margin: 0;
+}
