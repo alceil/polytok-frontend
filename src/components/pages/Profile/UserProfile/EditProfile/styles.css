@@ -1,0 +1,34 @@
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.login-title{
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    color: #333342;
+    font-weight: 790;
+    line-height: 36px;
+}
+
+.name-row{
+display: flex;
+}
+
+.input-wrapper{
+width: 100%;
+}
+
+.first-name{
+    margin-right: .4rem;
+}
+
+.last-name{
+    margin-left: .4rem;
+    color: red;
+}
+
+
