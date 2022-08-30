@@ -1,0 +1,26 @@
+h3{
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.delete-account-card{
+width: 100%;
+background-color: #ffff;
+border-radius: 1.2rem;
+padding: 2.5rem;
+margin: 1rem;
+}
+
+.delete-account-btn{
+    background-color: red;
+    display: flex;
+    align-items: center;
+    border: none;
+    margin: 0;
+    width: 280px;
+}
+
+.icon{
+    display: flex;
+    align-items: center;
+}

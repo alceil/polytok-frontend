@@ -1,13 +1,15 @@
 .theme-control-card{
+    width: 100%;
     background-color: #ffff;
     border-radius: 1.3rem;
     padding: 2.5rem;
+    margin: 1rem;
 }
 
 h3{
     margin: 0;
     margin-bottom: 1em;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
 }
 
 .button-grp{
