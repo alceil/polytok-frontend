@@ -3,7 +3,7 @@ import LoginModal from './components/common/LoginModal';
 import SignUpModal from './components/common/SignUpModal';
 import EditProfile from './components/pages/Profile/UserProfile/EditProfile';
 import Navbar from './components/Navbar';
-// import Home from './components/pages/Home';
+import Home from './components/pages/Home';
 import { Route, Routes } from 'react-router-dom';
 import Profile from './components/pages/Profile';
 import RightSideBar from './components/RightSideBar';
@@ -15,15 +15,10 @@ function App() {
     <Navbar/>
     {/* <Settings/> */}
     <Routes>
-
-
-
-<Route path="/settings" element={<Settings />} />
-          <Route path="/" element={<Profile/>} />
-
+    <Route path="/" element={<Home/>} />
+    <Route path="/settings" element={<Settings />} />
+    <Route path="/profile" element={<Profile />} />
     </Routes> 
-    {/* <Profile/> */}
-    {/* <Home/> */}
     <LoginModal/>
     <SignUpModal/>
     <RightSideBar/>
