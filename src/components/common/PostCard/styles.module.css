@@ -1,0 +1,22 @@
+.post_card{
+    background-color: #ffff;
+    display: flex;
+    border-radius: 1rem;
+    /* align-items: center; */
+    margin:1rem;
+    padding: 1rem;
+    height: 10rem;
+}
+.author_details{
+    display: flex;
+}
+
+.post_card_middle{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.post_image{
+    max-height: 140px;
+}
