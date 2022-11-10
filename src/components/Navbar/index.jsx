@@ -7,7 +7,7 @@ import NavUserDetails from './NavUserDetails';
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 const Navbar = () => {
-  const isUserLoggedIn = useSelector((state) => state.isUserLoggedIn);
+  const isUserLoggedIn = useSelector((state) => state.user.isUserLoggedIn);
 
   return (
     <div class="sidebar">

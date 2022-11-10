@@ -2,22 +2,20 @@ import React from 'react'
 import './styles.css'
 import { useSelector } from "react-redux";
 const NavUserDetails = () => {
-
-  const user = useSelector((state) => state.user);
-
-console.log("User")
-console.log(user)
-
+  const user = useSelector((state) => state.user.user);
+const {firstname,lastname,username,profilePic} =user;
   return (
-    <div class="author_details">
+    <div className="author_details">
     <img
-      class="profilepic"
-      src="https://polygram.herokuapp.com/api/pictures/6217439fb0b70e0016cc6b77"
+      className="profilepic"
+      src={profilePic}
       alt="profilepic"
     />
-    <div class="username">
-      <h6>{user.firstname??""}</h6>
-      <span class="userid">@alceil</span>
+    <div className="username">
+      <h6>{firstname??""}
+      {lastname && ` ${lastname}`}
+      </h6>
+      <span className="userid">@{username??""}</span>
     </div>
   </div>
   )
