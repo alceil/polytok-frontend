@@ -1,34 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux";
 import TextInput from '../../../../common/TextInput'
 import Button from '../../../../common/Button'
 import Modal from '../../../../common/Modal'
-import {   updatedetails,editprofilemodalclose } from '../../../../../redux/actions/auth.action'
+import {   updatedetails, updateUserDetails} from '../../../../../redux/slices/users.slice'
 import { useState } from "react";
 import './styles.css'
-const EditProfile = () => {
+const EditProfile = ({isOpen,onClose}) => {
     const dispatch = useDispatch();
-    const [firstname, setFirstname] = useState("");
-    const isEditModalVisible = useSelector((state) => state.isEditModalVisible);
-    console.log(isEditModalVisible);
+    const user = useSelector((state) => state.user.user);
+    const handleInputChange = (inputName) => (e) => {
+      setInputs((initialValues) => ({ ...initialValues, [inputName]: e.target.value }));
+    }; 
+  
+    const [inputs, setInputs] = useState({});
 
-    const handleModalClose = () => {
-      dispatch(editprofilemodalclose());
-      console.log("closed")
-      console.log(isEditModalVisible)
-    };
+    useEffect(() => {
+      setInputs({
+        firstname: user.firstname,
+        lastname: user.lastname,
+        bio: user.bio,
+      });
+    }, [user]);
 
     const handleEditDetails=(e)=>{
-        // dispatch(loginmodalclose());
         e.preventDefault();
-        dispatch(updatedetails({firstname}))
-        dispatch(editprofilemodalclose())
-        console.log("updated")
-        console.log(isEditModalVisible)
+        dispatch(updateUserDetails({...inputs,id:user._id}))
+        onClose();
     }
   return (
-    <Modal isOpen={false} onClose={handleModalClose}>
+    <Modal isOpen={isOpen} onClose={onClose}>
         <div className='login-modal'>
             <div className='login-head'>
                     <h1 className='login-title'>Log in</h1>
@@ -37,14 +39,22 @@ const EditProfile = () => {
             <TextInput
                 className="first-name"
                  label="First Name"
-                 value={firstname}
-                 onChange={(e) => setFirstname(e.target.value)}
+                 value={inputs.firstname??''}
+                 onChange={handleInputChange('firstname')}
                  />
                 <TextInput
                 className="last-name"
                  label="Last Name"
+                 value={inputs.lastname??''}
+                 onChange={handleInputChange('lastname')}
                  /> 
-<Button  onClick={(e) => handleEditDetails(e)}>
+                <TextInput
+                className="last-name"
+                 label="Bio"
+                 value={inputs.bio??''}
+                 onChange={handleInputChange('bio')}
+                 /> 
+<Button >
    Update Details
 </Button >
 
