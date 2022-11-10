@@ -1,8 +1,14 @@
 import React from 'react'
+import UserFeed from '../../common/UserFeed/Index'
+import PostContent from './PostContent'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div className='home'>
+    <PostContent/>
+<UserFeed/>
+    </div>
+
   )
 }
 
