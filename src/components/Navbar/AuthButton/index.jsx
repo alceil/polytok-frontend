@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.css'
 import { useDispatch } from "react-redux"
-import {  loginmodalopen, signupmodalopen } from '../../../redux/actions/auth.action';
+import {  loginmodalopen, signupmodalopen } from '../../../redux/slices/users.slice';
 
 
 const AuthButton = () => {
