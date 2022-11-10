@@ -1,0 +1,19 @@
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.body-title{
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    color: #333342;
+    font-weight: 790;
+    line-height: 36px;
+}
+
+
+
+
