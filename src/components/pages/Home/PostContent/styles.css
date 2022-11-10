@@ -1,0 +1,16 @@
+.post-content{
+    background-color: #ffff;
+    display: flex;
+    border-radius: 1rem;
+    align-items: center;
+    margin:1rem;
+    padding: 1rem;
+    height: 10rem;
+}
+
+input{
+    background-color: #ffff;
+    border: none;
+    /* font-size: 1.6rem;
+    font-weight: 600; */
+}
