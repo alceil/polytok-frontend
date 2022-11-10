@@ -5,19 +5,27 @@ import TextInput from '../TextInput'
 import './styles.css'
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux";
-import {  signup, signupmodalclose } from '../../../redux/actions/auth.action'
+import {  signupService, signupmodalclose } from '../../../redux/slices/users.slice'
 import { useState } from "react";
 const SignUpModal = () => {
-  const isSignUpModalVisible = useSelector((state) => state.isSignUpModalVisible);
+  const isSignUpModalVisible = useSelector((state) => state.user.isSignUpModalVisible);
   console.log("SignupModal")
   console.log(isSignUpModalVisible)
   const dispatch = useDispatch();
 
-  const [firstname, setFirstname] = useState("");
+  const [inputData,setInputData] = useState(
+    {
+      email: "",
+      firstname: "",
+      lastname: "",
+      username: "",
+      password: "",
+    }
+    )
     const handleSignUpSubmit=(e)=>{
       e.preventDefault();
 
-      dispatch(signup({firstname}))
+      dispatch(signupService(inputData))
       dispatch(signupmodalclose())
     }
 
@@ -25,6 +33,10 @@ const SignUpModal = () => {
       dispatch(signupmodalclose());
       console.log(isSignUpModalVisible)
     };
+
+    const handleInputChange = (inputName) => (e) => {
+      setInputData((initialValues) => ({ ...initialValues, [inputName]: e.target.value }));
+    }; 
 
   return (
     <Modal isOpen={isSignUpModalVisible} onClose={handleModalClose}>
@@ -35,22 +47,28 @@ const SignUpModal = () => {
             <form onSubmit={handleSignUpSubmit} className="signup-form">
                 <TextInput
                  label="Email Address"
+                 onChange={handleInputChange('email')}
+                 />
+                                 <TextInput
+                 label="User Name"
+                 onChange={handleInputChange('username')}
                  />
 <div className='name-row'>
                 <TextInput
                 className="first-name"
                  label="First Name"
-                 value={firstname}
-                 onChange={(e) => setFirstname(e.target.value)}
+                 onChange={handleInputChange('firstname')}
                  />
                 <TextInput
                 className="last-name"
                  label="Last Name"
+                 onChange={handleInputChange('lastname')}
                  />                 
 </div>
-
+  
 <TextInput
                  label="Password"
+                 onChange={handleInputChange('password')}
                  />
 <Button onClick={(e) => handleSignUpSubmit(e)} >
     Join Polytok
