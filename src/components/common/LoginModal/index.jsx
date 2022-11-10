@@ -1,5 +1,5 @@
-import React from 'react'
-import { loginmodalclose } from '../../../redux/actions/auth.action'
+import React,{useState} from 'react'
+import {loginService, loginmodalclose } from '../../../redux/slices/users.slice'
 import Button from '../Button'
 import Modal from '../Modal'
 import TextInput from '../TextInput'
@@ -8,16 +8,26 @@ import { useSelector } from "react-redux";
 import './styles.css'
 const LoginModal = () => {
   const dispatch = useDispatch();
-    const handleLoginSubmit=()=>{
-
+    const handleLoginSubmit=(e)=>{
+      e.preventDefault();
+      dispatch(loginService(inputData))
+      dispatch(loginmodalclose())
     }
-
-    const isLoginModalVisible = useSelector((state) => state.isLoginModalVisible);
+    const [inputData,setInputData] = useState(
+      {
+        email: "",
+        password: "",
+      }
+      )
+    const isLoginModalVisible = useSelector((state) => state.user.isLoginModalVisible);
     const handleModalClose = () => {
       dispatch(loginmodalclose());
       console.log(isLoginModalVisible)
     };
 
+    const handleInputChange = (inputName) => (e) => {
+      setInputData((initialValues) => ({ ...initialValues, [inputName]: e.target.value }));
+    }; 
   return (
     <Modal isOpen={isLoginModalVisible} onClose={handleModalClose}>
         <div className='login-modal'>
@@ -27,9 +37,11 @@ const LoginModal = () => {
             <form onSubmit={handleLoginSubmit} className="login-form">
                 <TextInput
                  label="Email Address"
+                 onChange={handleInputChange('email')}
                  />
-<TextInput
+                <TextInput
                  label="Password"
+                 onChange={handleInputChange('password')}
                  />
 <Button >
     Log in
