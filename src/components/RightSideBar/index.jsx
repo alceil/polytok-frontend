@@ -1,8 +1,12 @@
 import React from 'react'
+import FollowCard from './FollowCard'
 
 const RightSideBar = () => {
   return (
-    <div>RightSideBar</div>
+    <div className='right-side-bar'>
+      <FollowCard/>
+
+    </div>
   )
 }
 
