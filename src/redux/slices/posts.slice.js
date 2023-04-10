@@ -16,13 +16,28 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
 
 export const addNewPost = createAsyncThunk(
   'posts/addNewPost',
-  async (initialPost) => {
+  async (initialPost, { getState }) => {
+    const state = getState(); 
+    initialPost.avatarUrl = state.user.user.profilePic
+    console.log(initialPost)
     console.log("sending create post request");
     const response = await axios.post("http://localhost:5000/posts/create",initialPost);
     console.log(response.data)
     return response.data
   }
 )
+
+export const addComment = createAsyncThunk(
+  'posts/addComment',
+  async (initialPost) => {
+    console.log(initialPost)
+    console.log("sending create post request");
+    const response = await axios.put("http://localhost:5000/posts/addComment",initialPost);
+    console.log(response.data)
+    return response.data
+  }
+)
+
 
 const postsSlice = createSlice({
   name: 'posts',
@@ -71,6 +86,18 @@ const postsSlice = createSlice({
         console.log(action.payload.post.title)
         state.posts=[action.payload.post,...state.posts]
         console.log(state.posts)
+      })
+      .addCase(addComment.fulfilled, (state, action) => {
+        console.log("comment added")
+        console.log(action.payload)
+        // const { id, title, content } = action.payload
+        // const existingPost = state.posts.find((post) => post.id === id)
+        // if (existingPost) {
+        //   existingPost.comments = title
+        //   existingPost.content = content
+        // }
+        // state.posts=[action.payload.post,...state.posts]
+        // console.log(state.posts)
       })
   },
 })
