@@ -9,7 +9,7 @@ import {
   // FiChevronDown,
   // FiChevronUp,
   // FiCornerDownLeft,
-  // FiEdit,
+  FiBookmark,
   FiMessageSquare,
   FiHeart,
 
@@ -39,8 +39,8 @@ const PostCard = ({post}) => {
 </div>      
 </div>
 <div className={style.post_card_middle}>
-    <h2>{title}</h2>
-    <p>{description}</p>
+    <h2 style={{margin:'0px'}}>{title}</h2>
+    <p style={{marginTop:'0px'}}>{description}</p>
 
 {
 imageUrl && <img 
@@ -51,14 +51,19 @@ alt="post"  />
 
 </div> 
 <div className={style.post_card_bottom}>
-<button>
+<button 
+style={{border:'none',backgroundColor:'#fff'}}>
   <FiHeart/>
 </button>
-<button onClick={() => {setShowCommentEditor(!showCommentEditor)}}>
+<button 
+style={{border:'none',backgroundColor:'#fff'}}
+onClick={() => {setShowCommentEditor(!showCommentEditor)}}>
 <FiMessageSquare />
 </button>
-<button>
-  <FiHeart/>
+<button
+style={{border:'none',backgroundColor:'#fff'}}
+>
+  <FiBookmark/>
 </button>
 </div>
 
@@ -77,6 +82,10 @@ alt="post"  />
             name="newPost"
             rows="5"
             value={comment.content}
+            style={{
+              backgroundColor:'#F9FAFB'
+
+            }}
             // onChange={(e) => {
             //   setComment({
             //     ...comment,
