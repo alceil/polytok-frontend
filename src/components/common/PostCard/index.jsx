@@ -33,9 +33,9 @@ const PostCard = ({post}) => {
         src={avatarUrl}
         alt='profilepic'
         />
-<div>
-    <h6>Ashish Tom</h6>
-    <span>@alceil</span>
+<div style={{display:'flex',flexDirection:'column',justifyContent:'center',marginLeft:'10px'}}>
+    <h6 style={{padding:'0px',margin:'0px'}}>Ashish Tom</h6>
+    <span style={{position:'relative',right:'10px',fontSize:'12px'}}>@alceil</span>
 </div>      
 </div>
 <div className={style.post_card_middle}>
