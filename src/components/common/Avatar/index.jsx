@@ -10,3 +10,9 @@ const Avatar = ({src,alt,className}) => {
 }
 
 export default Avatar
+
+
+
+
+
+

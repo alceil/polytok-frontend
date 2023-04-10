@@ -20,3 +20,9 @@
 .post_image{
     max-height: 140px;
 }
+
+.post_card_bottom{
+    display: flex;
+    justify-items: space-between;
+
+}

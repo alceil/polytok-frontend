@@ -21,9 +21,7 @@ dispatch(fetchPosts())
           posts.map((post, index) => (
             <div key={post._id}>
           <PostCard 
-title={post.title} 
-imageUrl={post.imageUrl}
-description={post.description}
+          post={post}
 /> 
             </div>
           ))
