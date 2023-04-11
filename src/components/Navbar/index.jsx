@@ -14,9 +14,9 @@ const Navbar = () => {
       <img src="https://bit.ly/3dPwSv9" alt="Logo" width="50px"/>
 
 
-      <Link to="/"><NavItem icon={<BiHome />} name="Home"/></Link>
-<Link to="/profile"><NavItem icon={<BiUser />} name="Profile"/></Link>
-<Link to='/settings'><NavItem icon={<BiCog />} name="Settings"/></Link>
+      <Link style={{textDecoration:'none',color:'black'}} to="/"><NavItem icon={<BiHome />} name="Home"/></Link>
+<Link style={{textDecoration:'none',color:'black'}} to="/profile"><NavItem icon={<BiUser />} name="Profile"/></Link>
+<Link style={{textDecoration:'none',color:'black'}} to='/settings'><NavItem icon={<BiCog />} name="Settings"/></Link>
 <NavItem icon={<BiUser />} name="Notifications"/>
 {
 isUserLoggedIn?<NavUserDetails/>:<AuthButton/>
