@@ -1,11 +1,13 @@
 .nav-item{
     display: flex;
     justify-content: center;
+    margin: 3.2rem;
 }
 
 span{
     margin-left: 0.7rem;
     font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .icon{
