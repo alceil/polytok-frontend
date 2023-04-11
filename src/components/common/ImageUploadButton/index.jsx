@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRef } from 'react';
 import { GrEdit } from 'react-icons/gr';
-
+import './styles.css'
 
 const ImageUploadButton = ({ className, onUpload, name, id, accept }) => {
   const uploader = useRef(null);

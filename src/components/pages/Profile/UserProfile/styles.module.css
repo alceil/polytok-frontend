@@ -1,7 +1,8 @@
 .user_profile_card{
    border-radius: 1.3rem;
-   width: 100%;
+   width: 90%;
    background-color: #ffff;
+   margin: 1rem;
 }
 .cover_image{
     border-top-left-radius: 1rem;
@@ -35,11 +36,14 @@ justify-content: space-between;
     background-color: #e9e8fc;
 }
 
+.profile_picture_upload{
+position: relative;
+bottom: 3.4rem;
+left:3.8rem;
+}
+
 .button_grp{
     display: flex;
     align-items: center;
 }
 
-h3{
-    margin: 0;
-}

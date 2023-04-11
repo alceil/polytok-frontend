@@ -81,7 +81,7 @@ const getBase64 = (file) => {
     />
     <ImageUploadButton
                     accept="image/png, image/jpeg, image/jpg"
-                    className="profile-picture-upload"
+                    className={style.profile_picture_upload}
                     onUpload={handlePictureUpload}
     />
   </div>
