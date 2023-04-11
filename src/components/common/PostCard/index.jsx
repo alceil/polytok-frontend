@@ -25,7 +25,7 @@ const PostCard = ({post}) => {
   const [showCommentEditor, setShowCommentEditor] = useState(false);
   const [comment, setComment] = useState(defaultComment);
   return (
-    <>
+    <div style={{display:'flex',flexDirection:'column'}}>
     <div className= {style.post_card}>
         <div className='post_card-top'>
 <div className={style.author_details}>
@@ -76,13 +76,13 @@ style={{border:'none',backgroundColor:'#fff'}}
   style={{
 display:'flex',
 alignItems:'center',
-width:'100%',
+width:'52rem',
 justifyContent:'space-between',
 position:'relative',
-top:'200px',
 backgroundColor: '#ffff',
 borderRadius: '1rem',
-padding:'1rem'
+padding:'1rem',
+margin:'12px'
   }}
   >
  <Avatar
@@ -131,7 +131,7 @@ padding:'1rem'
           </button>
  </div>
  }
-    </>
+    </div>
 
   )
 }
