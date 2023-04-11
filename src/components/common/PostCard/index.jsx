@@ -8,7 +8,7 @@ import {
 import {
   // FiChevronDown,
   // FiChevronUp,
-  // FiCornerDownLeft,
+  FiCornerDownLeft,
   FiBookmark,
   FiMessageSquare,
   FiHeart,
@@ -25,6 +25,7 @@ const PostCard = ({post}) => {
   const [showCommentEditor, setShowCommentEditor] = useState(false);
   const [comment, setComment] = useState(defaultComment);
   return (
+    <>
     <div className= {style.post_card}>
         <div className='post_card-top'>
 <div className={style.author_details}>
@@ -68,10 +69,22 @@ style={{border:'none',backgroundColor:'#fff'}}
 </div>
 
  </div>
- 
- {
+    </div>
+    {
   showCommentEditor && 
-  <div>
+  <div
+  style={{
+display:'flex',
+alignItems:'center',
+width:'100%',
+justifyContent:'space-between',
+position:'relative',
+top:'200px',
+backgroundColor: '#ffff',
+borderRadius: '1rem',
+padding:'1rem'
+  }}
+  >
  <Avatar
         className='avatar'
         src={avatarUrl}
@@ -83,7 +96,11 @@ style={{border:'none',backgroundColor:'#fff'}}
             rows="5"
             value={comment.content}
             style={{
-              backgroundColor:'#F9FAFB'
+              border:'none',
+              backgroundColor:'#F9FAFB',
+              resize:'none',
+              width:'30rem',
+              outline:'none'
 
             }}
             // onChange={(e) => {
@@ -98,13 +115,24 @@ style={{border:'none',backgroundColor:'#fff'}}
             //   });
             // }}
             placeholder="Have any thoughts on this?"
-            // className=" mx-6 w-full resize-none whitespace-normal break-words  rounded-sm border-2 border-gray-50 bg-gray-50 px-3 focus:bg-gray-50 focus:outline-none"
           />
+
+          <button
+          style={{border:'none',
+          backgroundColor:'#3e2ed9',
+          color:'white',
+          borderRadius: '50%',
+          width: '50px',
+          height: '50px'
+        
+        }}
+          >
+         <FiCornerDownLeft/>
+          </button>
  </div>
  }
- 
+    </>
 
-    </div>
   )
 }
 
