@@ -15,12 +15,12 @@ const Navbar = () => {
 
 
       <Link style={{textDecoration:'none',color:'black'}} to="/"><NavItem icon={<BiHome />} name="Home"/></Link>
-<Link style={{textDecoration:'none',color:'black'}} to="/profile">
 <NavItem 
 isLoginRequired 
 icon={<BiUser />} 
-name="Profile"/>
-</Link>
+name="Profile"
+route="/profile"
+/>
 <Link style={{textDecoration:'none',color:'black'}} to='/settings'>
   <NavItem 
   icon={<BiCog />} 

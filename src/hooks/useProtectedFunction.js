@@ -1,13 +1,13 @@
 import { useCallback } from 'react';
 import { useSelector,useDispatch } from "react-redux";
-import {loginmodalopen } from '../../../redux/slices/users.slice';
+import {loginmodalopen } from '../redux/slices/users.slice';
 /**
  *
  * Custom hook which returns a function which modifies any function
  * in such a way that only the logged in user can use it.
  * @returns A function which modifies event handler functions
  */
-const useProtectedFunction = () => {
+export const useProtectedFunction = () => {
     const isUserLoggedIn = useSelector((state) => state.user.isUserLoggedIn);
   const dispatch = useDispatch();
 
@@ -32,4 +32,3 @@ const useProtectedFunction = () => {
   return protectFunction;
 };
 
-export default useProtectedFunction;
