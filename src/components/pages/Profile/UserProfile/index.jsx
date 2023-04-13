@@ -105,8 +105,8 @@ const getBase64 = (file) => {
 Ashish Thomas{firstname??""}
  {lastname && ` ${lastname}`}
 </h3>
-<p>
-  {bio}
+<p className={style.bio}>
+ Curious kid {bio}
 </p>
 <span className={style.username}>
     @alceil{username}
