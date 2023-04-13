@@ -70,7 +70,7 @@ const SignUpModal = () => {
                  label="Password"
                  onChange={handleInputChange('password')}
                  />
-<Button onClick={(e) => handleSignUpSubmit(e)} >
+<Button className='signup-btn' onClick={(e) => handleSignUpSubmit(e)} >
     Join Polytok
 </Button>
 
