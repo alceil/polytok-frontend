@@ -102,14 +102,14 @@ const getBase64 = (file) => {
 </div>
 <div className={style.user_profile_card_bottom}>
 <h3 className={style.name}>
-{firstname??""}
+Ashish {firstname??""}
  {lastname && ` ${lastname}`}
 </h3>
 <p>
   {bio}
 </p>
 <span className={style.username}>
-    @{username}
+    @alceil{username}
 </span>
 </div>
    </div>

@@ -47,3 +47,10 @@ left:3.8rem;
     align-items: center;
 }
 
+.username{
+    position: relative;
+    bottom: 3.8rem;
+    font-size: .8rem;
+}
+
+
