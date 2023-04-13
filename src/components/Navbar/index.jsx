@@ -15,25 +15,23 @@ const Navbar = () => {
 
 
       <Link style={{textDecoration:'none',color:'black'}} to="/"><NavItem icon={<BiHome />} name="Home"/></Link>
-<Link style={{textDecoration:'none',color:'black'}} to="/profile"><NavItem icon={<BiUser />} name="Profile"/></Link>
-<Link style={{textDecoration:'none',color:'black'}} to='/settings'><NavItem icon={<BiCog />} name="Settings"/></Link>
-<NavItem icon={<BiUser />} name="Notifications"/>
+<Link style={{textDecoration:'none',color:'black'}} to="/profile">
+<NavItem 
+isLoginRequired 
+icon={<BiUser />} 
+name="Profile"/>
+</Link>
+<Link style={{textDecoration:'none',color:'black'}} to='/settings'>
+  <NavItem 
+  icon={<BiCog />} 
+  name="Settings"/>
+  </Link>
+<NavItem 
+icon={<BiUser />} 
+name="Notifications"/>
 {
 isUserLoggedIn?<NavUserDetails/>:<AuthButton/>
-
 }
-      {/* <div class="sidebarRow">
-        <span class="material-icons">people</span>
-        <h4>Profile</h4>
-      </div>
-<div class="sidebarRow">
-    <span class="material-icons">notifications</span>
-    <h4>Notifications</h4>
-  </div>
-    <div class="sidebarRow">
-      <span class="material-icons">settings</span>
-      <h4>Settings</h4>
-    </div> */}
   </div>
   )
 }
