@@ -1,5 +1,5 @@
 import React from 'react'
-import UserFeed from '../../common/UserFeed/Index'
+import UserFeed from '../../common/UserFeed'
 import PostContent from './PostContent'
 
 const Home = () => {
