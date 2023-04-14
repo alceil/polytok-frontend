@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     margin: 3.2rem;
+      cursor: pointer;
 }
 
 span{
