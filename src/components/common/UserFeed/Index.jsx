@@ -3,12 +3,12 @@ import PostCard from '../PostCard'
 import './styles.module.css'
 import { useSelector,useDispatch } from "react-redux";
 import { fetchPosts } from '../../../redux/slices/posts.slice';
-const UserFeed = () => {
+const UserFeed = ({user_id}) => {
   const dispatch = useDispatch();
-
+console.log(user_id)
   useEffect(() => {
-dispatch(fetchPosts())
-  }, [dispatch]);
+dispatch(fetchPosts({user_id}))
+  }, [dispatch,user_id]);
 
   
   const {posts} = useSelector((state) => state.post);
@@ -21,7 +21,7 @@ dispatch(fetchPosts())
           posts.map((post, index) => (
             <div key={post._id}>
           <PostCard 
-          post={post}
+          postData={post}
 /> 
             </div>
           ))
