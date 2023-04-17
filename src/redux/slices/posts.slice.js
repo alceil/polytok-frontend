@@ -8,9 +8,16 @@ const initialState = {
   error: null,
 }
 
-export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
+export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (query) => {
   // const response = await api.get('/posts/all')
-  const response = await axios.get("http://localhost:5000/posts/all");
+  const {user_id = null} = query;
+  console.log("user_id")
+  const response = await axios.get("http://localhost:5000/posts/all",{
+    params: {
+      user_id,
+    },
+  });
+  console.log(response)
   return response.data
 })
 
@@ -18,7 +25,8 @@ export const addNewPost = createAsyncThunk(
   'posts/addNewPost',
   async (initialPost, { getState }) => {
     const state = getState(); 
-    initialPost.avatarUrl = state.user.user.profilePic
+    initialPost.username = state.user.user.username
+
     console.log(initialPost)
     console.log("sending create post request");
     const response = await axios.post("http://localhost:5000/posts/create",initialPost);
