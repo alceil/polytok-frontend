@@ -87,7 +87,7 @@ const getBase64 = (file) => {
   </div>
 
 <div className={style.button_grp}>
-   <Button className={style.edit_btn} onClick={editHandler}>
+   <Button className={style.edit_btn}  onClick={() => setIsModalOpen(true)}>
     Edit Profile
     </Button> 
 
@@ -102,15 +102,16 @@ const getBase64 = (file) => {
 </div>
 <div className={style.user_profile_card_bottom}>
 <h3 className={style.name}>
-Ashish Thomas{firstname??""}
+{firstname??""}
  {lastname && ` ${lastname}`}
 </h3>
-<p className={style.bio}>
- Curious kid {bio}
-</p>
 <span className={style.username}>
-    @alceil{username}
+    @{username}
 </span>
+<p className={style.bio}>
+  {bio}
+</p>
+
 </div>
    </div>
    <EditProfile isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
