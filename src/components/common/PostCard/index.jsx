@@ -14,14 +14,17 @@ import {
   FiHeart,
 
 } from "react-icons/fi";
-const PostCard = ({post}) => {
-  const {_id,title,imageUrl,description,avatarUrl} = post;
+import { getFullName } from '../../../utils/common';
+const PostCard = ({ postData}) => {
+  const {title,imageUrl,description,author} = postData;
+  const {username,profilePic} = author
   const defaultComment = {
     content: "",
     userName: "",
     avatarUrl: "",
     date: "",
   };
+
   const [showCommentEditor, setShowCommentEditor] = useState(false);
   const [comment, setComment] = useState(defaultComment);
   return (
@@ -31,12 +34,12 @@ const PostCard = ({post}) => {
 <div className={style.author_details}>
 <Avatar
         className='avatar'
-        src={avatarUrl}
+        src={profilePic}
         alt='profilepic'
         />
 <div style={{display:'flex',flexDirection:'column',justifyContent:'center',marginLeft:'10px'}}>
-    <h6 style={{padding:'0px',margin:'0px'}}>Ashish Tom</h6>
-    <span style={{position:'relative',right:'10px',fontSize:'12px'}}>@alceil</span>
+    <h6 style={{padding:'0px',margin:'0px'}}>{getFullName(author)}</h6>
+    <span style={{position:'relative',right:'10px',fontSize:'12px'}}>@{username}</span>
 </div>      
 </div>
 <div className={style.post_card_middle}>
@@ -87,7 +90,7 @@ margin:'12px'
   >
  <Avatar
         className='avatar'
-        src={avatarUrl}
+        src={profilePic}
         alt='profilepic'
         />
   <textarea

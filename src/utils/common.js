@@ -22,11 +22,11 @@ export const makeObjectFromArray = (array, initialValue) => {
   };
   
   export const getFullName = (user) => {
-    const { first_name = null, last_name = null } = user || {};
-    if (last_name) {
-      return `${first_name} ${last_name}`;
+    const { firstname = null, lastname = null } = user || {};
+    if (lastname) {
+      return `${firstname} ${lastname}`;
     }
-    return first_name;
+    return firstname;
   };
   
   export const readFile = (file) =>
