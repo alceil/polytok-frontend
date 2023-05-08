@@ -46,6 +46,30 @@ export const addComment = createAsyncThunk(
   }
 )
 
+export const LikePost = createAsyncThunk("posts/likepost", async ( {postId, username}) => {
+           const response = await axios.put(`http://localhost:5000/posts/likepost`, {
+              username,
+              postId
+            }  
+           );
+           console.log(response.data)
+             return response.data;
+} )
+
+export const UnLikePost = createAsyncThunk("post/unlikepost", async ( {postId, username }) => {
+   try{
+       const response = await axios.put(`http://localhost:5000/posts/unlikepost`, {
+           postId,
+           username
+       });
+       console.log(response.data)
+        return response.data;
+   } catch (error) {
+       console.log("Error occured: ", error.message);
+       return Promise.reject(error.message);
+   }
+} )
+
 
 const postsSlice = createSlice({
   name: 'posts',
@@ -83,10 +107,12 @@ const postsSlice = createSlice({
       .addCase(fetchPosts.fulfilled, (state, action) => {
         state.status = 'succeeded'
         // Add any fetched posts to the array
+        console.log(state.posts)
         state.posts = action.payload
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = 'failed'
+        
         state.error = action.error.message
       })
       .addCase(addNewPost.fulfilled, (state, action) => {
@@ -96,21 +122,56 @@ const postsSlice = createSlice({
         console.log(state.posts)
       })
       .addCase(addComment.fulfilled, (state, action) => {
-        console.log("comment added")
         console.log(action.payload)
-        // const { id, title, content } = action.payload
-        // const existingPost = state.posts.find((post) => post.id === id)
-        // if (existingPost) {
-        //   existingPost.comments = title
-        //   existingPost.content = content
-        // }
-        // state.posts=[action.payload.post,...state.posts]
-        // console.log(state.posts)
+        const {_id} = action.payload;
+            const post = state.posts.find(
+                post => post._id === _id
+            );
+            post.comments = action.payload.comments.reverse();
       })
+      .addCase(LikePost.pending, (state) => {
+        // state.actionInProgress = true;
+    })
+    .addCase(LikePost.fulfilled, (state, action) => {
+      const {_id} = action.payload;
+      console.log(action.payload._id)
+              const existingPost = state.posts.find((post) => post._id === _id);
+              console.log(existingPost);
+              existingPost.likes = action.payload.likes;
+        console.log(action.payload)
+        // if(action.payload.success){
+            // const post = state.feed.find( 
+            //     post => post._id === action.payload.post._id
+            //     );
+            //     post.likes = action.payload.post.likes;
+        // }
+    },)
+    .addCase(LikePost.rejected, (state, action) => {
+        // state.actionInProgress = false;
+        // state.isError = true
+        state.errorMsg = action.error.message;
+    })
+    .addCase(UnLikePost.pending, (state) => {
+        state.actionInProgress = true;
+    })
+    .addCase(UnLikePost.fulfilled, (state, action) => {
+      const {_id} = action.payload;
+      console.log(_id)
+      console.log(action.payload)
+              const existingPost = state.posts.find((post) => post._id === _id);
+              console.log(existingPost);
+              console.log(state.posts)
+              existingPost.likes = action.payload.likes;
+    })
+    .addCase(UnLikePost.rejected, (state, action) => {
+        // state.actionInProgress = false;
+        // state.isError = true;
+        // state.errorMsg = action.error.message;
+    })
   },
 })
 
-export const { postAdded, postUpdated, reactionAdded,createNewPost,resetState } = postsSlice.actions
+export const { postAdded, postUpdated, reactionAdded,createNewPost,resetState} = postsSlice.actions
 
 export default postsSlice.reducer
 
