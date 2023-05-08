@@ -98,6 +98,39 @@ export const updateUserDetails = createAsyncThunk(
   }
 );
 
+export const BookmarkPost = createAsyncThunk("user/bookmarkpost", async ( { postData }, { getState }) => {
+  try{
+    const {username} = getState().user.user;
+    console.log(postData)
+    
+      const response = await axios.put(`http://localhost:5000/auth/bookmarkpost`, {
+          postData,
+          username
+      });
+      console.log(response.data)
+       return response.data;
+  } catch (error) {
+      console.log("Error occured: ", error.message);
+      return Promise.reject(error.message);
+  }
+} )
+
+export const UndoBookmarkPost = createAsyncThunk("user/undobookmarkpost", async ( {postId }, { getState }) => {
+  try{
+    const {username} = getState().user.user;
+    console.log(username)
+      const response = await axios.put(`http://localhost:5000/auth/unbookmarkpost`, {
+        postId,
+          username
+      });
+      console.log(response.data)
+       return response.data;
+  } catch (error) {
+      console.log("Error occured: ", error.message);
+      return Promise.reject(error.message);
+  }
+} )
+
 // export const getProfileService = createAsyncThunk("user/myProfile", async () => {
 //   const { token } = JSON.parse(localStorage?.getItem("login"));
 //   try{
@@ -177,12 +210,12 @@ const initialState = {
     name: null,
     firstname: null,
     lastname:null,
+    bookmarks:[],
     username: null,
     email: null,
     bio: "",
     followers: [],
     following: [],
-    posts: [],
     profilePic:''
   },
   userLoading: "not-loading" ,
@@ -334,6 +367,20 @@ export const userSlice = createSlice({
       state.isError = true;
       state.errorMsg = action.error.message;
     },
+
+    [BookmarkPost.fulfilled]: (state, action) => {
+      console.log(action.payload.bookmarks)
+        state.user.bookmarks = action.payload.bookmarks;
+        // state.isError = false;
+        // state.errorMessage = "";
+    },
+
+    [UndoBookmarkPost.fulfilled]: (state, action) => {
+      console.log(action.payload.bookmarks)
+        state.user.bookmarks = action.payload.bookmarks;
+        // state.isError = false;
+        // state.errorMessage = "";
+    },
     // [getProfileService.pending]: (state) => {
     //   state.profileLoading = true;
     // },
@@ -393,6 +440,6 @@ export const userSlice = createSlice({
   }
 });
 
-export const { logoutBtnPressed, loginmodalopen,loginmodalclose,signupmodalopen,signupmodalclose,signup,updatedetails,changeProfilePic} = userSlice.actions;
+export const { logoutBtnPressed, loginmodalopen,loginmodalclose,signupmodalopen,signupmodalclose,signup,updatedetails,changeProfilePic,} = userSlice.actions;
 
 export default userSlice.reducer;

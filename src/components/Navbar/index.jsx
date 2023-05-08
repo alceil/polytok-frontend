@@ -2,6 +2,7 @@ import React from 'react'
 import NavItem from './NavItem'
 import './styles.css'
 import {BiHome,BiUser,BiCog} from 'react-icons/bi';
+import {MdBookmark} from 'react-icons/md';
 import AuthButton from './AuthButton';
 import NavUserDetails from './NavUserDetails';
 import { useSelector } from "react-redux";
@@ -26,9 +27,12 @@ route="/profile"
   icon={<BiCog />} 
   name="Settings"/>
   </Link>
-<NavItem 
-icon={<BiUser />} 
-name="Notifications"/>
+  <Link style={{textDecoration:'none',color:'black'}} to='/bookmarks'>
+  <NavItem 
+icon={<MdBookmark />} 
+name="Bookmarks"/>
+  </Link>
+
 {
 isUserLoggedIn?<NavUserDetails/>:<AuthButton/>
 }
