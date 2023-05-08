@@ -11,9 +11,6 @@
 
 }
 
-.page::-webkit-scrollbar {
-    display: none;
-  }
 .back-btn{
 color: #7d71fe;
 font-size: 1.2rem;
