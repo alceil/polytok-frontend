@@ -5,7 +5,7 @@ import Modal from '../Modal'
 import TextInput from '../TextInput'
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux";
-import './styles.css'
+import './LoginModal.css'
 const LoginModal = () => {
   const dispatch = useDispatch();
     const handleLoginSubmit=(e)=>{
@@ -41,6 +41,7 @@ const LoginModal = () => {
                  />
                 <TextInput
                  label="Password"
+                 type='password'
                  onChange={handleInputChange('password')}
                  />
 <Button >
