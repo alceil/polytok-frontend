@@ -1,25 +1,34 @@
-import React,{useState} from 'react'
+import React,{useState,useMemo} from 'react'
 import {loginService, loginmodalclose } from '../../../redux/slices/users.slice'
 import Button from '../Button'
 import Modal from '../Modal'
 import TextInput from '../TextInput'
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux";
+import { passwordRegex,emailRegex } from '../../../utils/regex';
 import './LoginModal.css'
 const LoginModal = () => {
   const dispatch = useDispatch();
-    const handleLoginSubmit=(e)=>{
-      e.preventDefault();
-      dispatch(loginService(inputData))
-      dispatch(loginmodalclose())
-    }
+  const isLoginModalVisible = useSelector((state) => state.user.isLoginModalVisible);
+
     const [inputData,setInputData] = useState(
       {
         email: "",
         password: "",
       }
       )
-    const isLoginModalVisible = useSelector((state) => state.user.isLoginModalVisible);
+      const [emailError, setEmailError] = useState(null);
+      const [passwordError, setPasswordError] = useState(null);
+
+  const isValid = useMemo(() => !emailError && !passwordError, [emailError, passwordError]);
+  const handleLoginSubmit=(e)=>{
+    e.preventDefault();
+  // Checking if form has any errors
+  if (!isValid) return;
+
+    dispatch(loginService(inputData))
+    dispatch(loginmodalclose())
+  } 
     const handleModalClose = () => {
       dispatch(loginmodalclose());
       console.log(isLoginModalVisible)
@@ -36,15 +45,31 @@ const LoginModal = () => {
             </div>
             <form onSubmit={handleLoginSubmit} className="login-form">
                 <TextInput
-                 label="Email Address"
-                 onChange={handleInputChange('email')}
+                      autoFocus
+                      minLength={5}
+                      maxLength={50}
+                      label="Email Address"
+                      value={inputData.email}
+                      error={emailError}
+                      pattern={emailRegex}
+                      setError={setEmailError}
+                      onChange={handleInputChange('email')}
+                      patternMessage="Please enter a valid email"
                  />
                 <TextInput
-                 label="Password"
-                 type='password'
-                 onChange={handleInputChange('password')}
+                        minLength={8}
+                        maxLength={50}
+                        type='password'
+                        label="Password"
+                        value={inputData.password}
+                        error={passwordError}
+                        pattern={passwordRegex}
+                        setError={setPasswordError}
+                        onChange={handleInputChange('password')}
+                        patternMessage="Password must contain at least an alphabet, a special character and a number"
+                 
                  />
-<Button >
+<Button  type="submit">
     Log in
 </Button>
 

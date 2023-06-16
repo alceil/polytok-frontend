@@ -62,15 +62,21 @@ const TextInput = ({
         <label htmlFor={name ?? 'text-input'}>
         {label}
     </label>
-  <input 
-    type={type} 
-   className='input-test'
+  <input
+         {...props}
+         value={value}
+         type={type} 
+         autoComplete={autoComplete}
+         onChange={handleInputChange}
+         className='input-test'
+        //  className={type === 'password' ? 'password-input' : ''}
+         name={name ?? 'text-input'} 
    placeholder={label}
-   onChange={handleInputChange}
    {...props}
   />
-
+    {error !== '' && <span className="input-error">{error}</span>}
         </div>
+      
     </div>
   )
 }
