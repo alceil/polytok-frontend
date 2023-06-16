@@ -1,5 +1,5 @@
 import React from 'react'
-import './styles.css'
+import './TextInput.css'
 const TextInput = ({className,name,  type = 'text',label,...props}) => {
   return (
     <div className={`input-wrapper ${className||''}`}>
@@ -9,7 +9,7 @@ const TextInput = ({className,name,  type = 'text',label,...props}) => {
     </label>
   <input 
     type={type} 
-   className={type === 'password'?'password-input':''}
+   className='input-test'
    placeholder={label}
    {...props}
   />
