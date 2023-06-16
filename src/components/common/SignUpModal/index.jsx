@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '../Button'
 import Modal from '../Modal'
 import TextInput from '../TextInput'
-import './styles.css'
+import './SignUpModal.css'
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux";
 import {  signupService, signupmodalclose } from '../../../redux/slices/users.slice'
