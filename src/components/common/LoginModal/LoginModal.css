@@ -4,7 +4,7 @@
     flex-direction: column;
     margin: 10px;
     padding: 1rem;
-    gap: 1rem;
+    gap: 10px;
 }
 
 .login-title{

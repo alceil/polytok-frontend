@@ -31,7 +31,12 @@ const LoginModal = () => {
   } 
     const handleModalClose = () => {
       dispatch(loginmodalclose());
-      console.log(isLoginModalVisible)
+      setInputData({
+        email: "",
+        password: "",
+      })
+      setEmailError(null)
+      setPasswordError(null)
     };
 
     const handleInputChange = (inputName) => (e) => {
