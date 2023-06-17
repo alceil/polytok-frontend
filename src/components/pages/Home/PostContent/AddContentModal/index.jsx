@@ -3,6 +3,7 @@ import Modal from '../../../../common/Modal'
 import TextInput from '../../../../common/TextInput'
 import { useDispatch } from "react-redux"
 import Button from '../../../../common/Button'
+import './AddContentModal.css'
 import {addNewPost} from '../../../../../redux/slices/posts.slice'
 const AddContentModal = ({isOpen, onClose}) => {
   const [inputData,setInputData] = useState(
@@ -28,7 +29,7 @@ onClose();
     <Modal isOpen={isOpen} onClose={onClose}>
         <div className='body-modal'>
             <div className='body-head'>
-                    <h1 className='body-title'>Log in</h1>
+                    <h1 className='body-title'>Post</h1>
             </div>
             <form onSubmit={handlePostSubmit} className="body-form">
                 <TextInput
