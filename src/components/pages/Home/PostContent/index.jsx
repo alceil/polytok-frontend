@@ -2,7 +2,7 @@ import React from 'react'
 import Avatar from '../../../common/Avatar'
 import Button from '../../../common/Button'
 import AddContentModal from '../PostContent/AddContentModal'
-import  './styles.css'
+import  './PostContent.css'
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import {useProtectedFunction} from '../../../../hooks/useProtectedFunction'
@@ -27,7 +27,8 @@ const PostContent = () => {
   });
   return (
     <div className='post-content'>
-        <Avatar
+      <div className='input-group'>
+      <Avatar
         className='avatar'
         src={isUserLoggedIn?profilePic:placeholderImage}
         alt='profilepic'
@@ -42,6 +43,8 @@ const PostContent = () => {
                 onClick={protectFunction(() => {})}
                 onChange={handleContentChange}
               />
+      </div>
+     
               <Button className='post-btn' onClick={openAddContentPopup}>
                 Post
               </Button>
