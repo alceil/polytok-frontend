@@ -1,4 +1,28 @@
 .icon-btn{
     display: flex;
     border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+    padding: 10px 10px;
+    border-radius: 6px;
+    color: #68778d;
 }
+
+
+.icon-btn:active {
+    transform: translateY(0.16rem);
+  }
+  
+
+  .icon-btn:hover {
+    filter: brightness(0.95);
+  }
+
+  
+  
+  
+  
+  
+  
+  
+  
