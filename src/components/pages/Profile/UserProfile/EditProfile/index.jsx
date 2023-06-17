@@ -6,7 +6,7 @@ import Button from '../../../../common/Button'
 import Modal from '../../../../common/Modal'
 import {   updatedetails, updateUserDetails} from '../../../../../redux/slices/users.slice'
 import { useState } from "react";
-import './styles.css'
+import './EditProfile.css'
 const EditProfile = ({isOpen,onClose}) => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user.user);
@@ -33,23 +33,20 @@ const EditProfile = ({isOpen,onClose}) => {
     <Modal isOpen={isOpen} onClose={onClose}>
         <div className='login-modal'>
             <div className='login-head'>
-                    <h1 className='login-title'>Log in</h1>
+                    <h1 className='login-title'>Edit Details</h1>
             </div>
             <form onSubmit={handleEditDetails} className="login-form">
             <TextInput
-                className="first-name"
                  label="First Name"
                  value={inputs.firstname??''}
                  onChange={handleInputChange('firstname')}
                  />
                 <TextInput
-                className="last-name"
                  label="Last Name"
                  value={inputs.lastname??''}
                  onChange={handleInputChange('lastname')}
                  /> 
                 <TextInput
-                className="last-name"
                  label="Bio"
                  value={inputs.bio??''}
                  onChange={handleInputChange('bio')}

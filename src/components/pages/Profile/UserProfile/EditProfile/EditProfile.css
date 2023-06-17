@@ -2,7 +2,6 @@
 .login-form{
     display: flex;
     flex-direction: column;
-    margin: 10px;
 }
 
 .login-title{
@@ -21,7 +20,7 @@ display: flex;
 .input-wrapper{
 width: 100%;
 }
-
+/* 
 .first-name{
     margin-right: .4rem;
 }
@@ -29,6 +28,6 @@ width: 100%;
 .last-name{
     margin-left: .4rem;
     color: red;
-}
+} */
 
 
