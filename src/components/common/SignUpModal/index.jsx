@@ -6,38 +6,51 @@ import './SignUpModal.css'
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux";
 import {  signupService, signupmodalclose } from '../../../redux/slices/users.slice'
-import { useState } from "react";
+import {makeObjectFromArray} from '../../../utils/common';
+import { useState,useMemo } from "react";
+import { emailRegex, passwordRegex, usernameRegex } from '../../../utils/regex';
 const SignUpModal = () => {
   const isSignUpModalVisible = useSelector((state) => state.user.isSignUpModalVisible);
-  console.log("SignupModal")
-  console.log(isSignUpModalVisible)
   const dispatch = useDispatch();
+  const signUpInputFields = [
+    'email',
+    'username',
+    'password',
+    'lastname',
+    'firstname',
+  ];
+    // An object with names of each input field as keys  and value ''
+    const [inputs, setInputs] = useState(makeObjectFromArray(signUpInputFields, ''));
 
-  const [inputData,setInputData] = useState(
-    {
-      email: "",
-      firstname: "",
-      lastname: "",
-      username: "",
-      password: "",
-    }
-    )
+    // An object with names of each input field as keys and value null
+    const [errors, setErrors] = useState(makeObjectFromArray(signUpInputFields, null));
+  
+    // isValid will be false if any entries of error object is not null
+    const isValid = useMemo(() => Object.values(errors).every((error) => error === null), [errors]);
+
+
     const handleSignUpSubmit=(e)=>{
       e.preventDefault();
-
-      dispatch(signupService(inputData))
+      if(!isValid) return;
+      dispatch(signupService(inputs))
       dispatch(signupmodalclose())
     }
 
     const handleModalClose = () => {
+      setInputs(makeObjectFromArray(signUpInputFields, ''));
+      setErrors(makeObjectFromArray(signUpInputFields, null));
       dispatch(signupmodalclose());
       console.log(isSignUpModalVisible)
     };
 
     const handleInputChange = (inputName) => (e) => {
-      setInputData((initialValues) => ({ ...initialValues, [inputName]: e.target.value }));
+      setInputs((initialValues) => ({ ...initialValues, [inputName]: e.target.value }));
     }; 
 
+    const setSingleError = (inputName) => (error) => {
+      setErrors((initialErrors) => ({ ...initialErrors, [inputName]: error }));
+    };
+    
   return (
     <Modal isOpen={isSignUpModalVisible} onClose={handleModalClose}>
         <div className='signup-modal'>
@@ -46,30 +59,63 @@ const SignUpModal = () => {
             </div>
             <form onSubmit={handleSignUpSubmit} className="signup-form">
                 <TextInput
-                 label="Email Address"
-                 onChange={handleInputChange('email')}
+                autofocus
+                minLength={5}
+                maxLength={50}
+                label="Email Address"
+                value={inputs.email}
+                error={errors.email}
+                pattern={emailRegex}
+                setError={setSingleError('email')}
+                onChange={handleInputChange('email')}
+                patternMessage="Please enter a valid email"
                  />
-                                 <TextInput
-                 label="User Name"
-                 onChange={handleInputChange('username')}
-                 />
+                <TextInput
+                              minLength={4}
+                              maxLength={15}
+                              label="Username"
+                              error={errors.username}
+                              value={inputs.username}
+                              pattern={usernameRegex}
+                              setError={setSingleError('username')}
+                              onChange={handleInputChange('username')}
+                              patternMessage="Username must only contain small letters, numbers, dashes and underscore"
+                   />
 <div className='name-row'>
                 <TextInput
+                minLength={3}
+                maxLength={30}
+                label="First Name"
                 className="first-name"
-                 label="First Name"
-                 onChange={handleInputChange('firstname')}
+                error={errors.firstname}
+                value={inputs.firstname}
+                setError={setSingleError('firstname')}
+                onChange={handleInputChange('firstname')}
                  />
                 <TextInput
-                className="last-name"
+                 minLength={0}
+                 maxLength={30}
                  label="Last Name"
+                 className="last-name"
+                 error={errors.lastname}
+                 value={inputs.lastname}
+                 setError={setSingleError('lastname')}
                  onChange={handleInputChange('lastname')}
                  />                 
 </div>
-  
 <TextInput
-                 label="Password"
-                 onChange={handleInputChange('password')}
+ minLength={8}
+ maxLength={50}
+ type="password"
+ label="Password"
+ value={inputs.password}
+ error={errors.password}
+ pattern={passwordRegex}
+ setError={setSingleError('password')}
+ onChange={handleInputChange('password')}
+ patternMessage="Password must contain at least an alphabet, a special character and a number"
                  />
+
 <Button className='signup-btn' onClick={(e) => handleSignUpSubmit(e)} >
     Join Polytok
 </Button>
