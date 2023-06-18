@@ -3,14 +3,16 @@ import './styles.css'
 import { FiArrowLeft } from 'react-icons/fi';
 import IconButton from '../../common/IconButton';
 import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import PostCard from '../../common/PostCard';
 const BookMarks = () => {
   const user = useSelector((state) => state.user.user);
   const {bookmarks} = user;
+  const navigate = useNavigate();
   return (
     <div className='page'>
         <div className='page-back'>
-        <IconButton className={'back-btn'}>
+        <IconButton className={'back-btn'} onClick={()=>navigate(-1)}>
             <FiArrowLeft/>
         </IconButton>
         <h2>Bookmarks</h2>
