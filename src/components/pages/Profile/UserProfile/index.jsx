@@ -94,9 +94,6 @@ const getBase64 = (file) => {
     <IconButton >
         <CgLogOut />
       </IconButton>
-    {/* <Button>
-    Edit Profile
-    </Button>  */}
 </div>
 
 </div>
