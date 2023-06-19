@@ -7,12 +7,6 @@ import {  loginmodalopen, signupmodalopen } from '../../../redux/slices/users.sl
 const AuthButton = () => {
   const dispatch = useDispatch();
 
-  // const signupdata = {
-  //   username:"alceil",
-  //   password:"buhahaha"
-
-  // }
-
   const loginHandler = () => {
     dispatch(loginmodalopen());
 };
