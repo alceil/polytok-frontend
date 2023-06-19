@@ -1,16 +1,30 @@
 .nav-item{
     display: flex;
-    justify-content: center;
+  align-items: center;
     margin: 3.2rem;
       cursor: pointer;
+      padding: .5rem 1rem;
+      color: #6B7280;
+}
+
+.nav-item:hover{
+  background-color: #f5f5f5;
+  border-radius: 6px;
+
 }
 
 span{
     margin-left: 0.7rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
 }
 
 .icon{
     font-size: 1.75rem;
+}
+
+.active-nav-item{
+  color: #582be8;
+  background-color: #f5f5f5;
+  border-radius: 6px;
 }

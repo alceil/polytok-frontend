@@ -1,8 +1,14 @@
 .sidebar {
 
     background-color: white;
-    width: 18vw;
+    width: 30vw;
     height: 100vh;
     box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
+  }
+
+  .logo{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 3rem;
   }
   
