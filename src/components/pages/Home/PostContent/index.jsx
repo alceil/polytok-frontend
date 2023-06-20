@@ -8,13 +8,13 @@ import { useSelector } from "react-redux";
 import {useProtectedFunction} from '../../../../hooks/useProtectedFunction'
 import placeholderImage from '../../../../assets/images/placeholder_profile_picture.png'
 const PostContent = () => {
+  const protectFunction = useProtectedFunction();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const openAddContentPopup = ()=> setIsModalOpen(true);
+  const openAddContentPopup = protectFunction(() => setIsModalOpen(true));
   const isUserLoggedIn = useSelector((state) => state.user.isUserLoggedIn);
   const user = useSelector((state) => state.user.user);
   const {profilePic} =user
   const [content, setContent] = useState('');
-  const protectFunction = useProtectedFunction();
   const openAddQuestionPopup = protectFunction(() => setIsModalOpen(true));
 
   const handleContentChange = protectFunction((e) => {

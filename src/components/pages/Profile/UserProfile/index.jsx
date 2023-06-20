@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ImageUploadButton from '../../../common/ImageUploadButton';
 import { updateProfilePicService } from '../../../../redux/slices/users.slice';
 import placeholderProfilePicture from '../../../../assets/images/placeholder_profile_picture.png';
+import LogoutButton from './LogoutButton';
 const UserProfile = () => {
   const dispatch = useDispatch()
   
@@ -90,12 +91,8 @@ const getBase64 = (file) => {
    <Button className={style.edit_btn}  onClick={() => setIsModalOpen(true)}>
     Edit Profile
     </Button> 
-
-    <IconButton >
-        <CgLogOut />
-      </IconButton>
+<LogoutButton/>
 </div>
-
 </div>
 <div className={style.user_profile_card_bottom}>
 <h3 className={style.name}>
