@@ -4,10 +4,18 @@ import './styles.css'
 const FollowCard = () => {
   return (
     <div className='follow-card'>
-        <h1>People to Follow</h1>
+        <h3>Trending Topics</h3>
 <FollowRow
-username="alceil"
-designation="ceo kindify"
+username="Movies"
+designation="6 questions"
+/>
+<FollowRow
+username="Movies"
+designation="6 questions"
+/>
+<FollowRow
+username="Movies"
+designation="6 questions"
 />
     </div>
   )

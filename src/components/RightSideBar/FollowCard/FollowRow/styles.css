@@ -4,17 +4,23 @@
     align-items: center;
 }
 
-h4{
+.follow-row h4{
     margin: 0;
+    font-size: .8rem;
+}
+.follow-row span{
+    margin:0;
+    font-size: .6rem;
+    color: #68778d;
 }
 
 
+
 .follow-btn{
-    font-size: 10px;
-    height: 30px;
-    width: 70px;
+    font-size: .6rem;
+    font-weight: 600;
+    padding: 8px 14px;
     background-color: #E9E8FC;
     border: none;
     color: #4443DE;
-    font-weight: 500;
 }
