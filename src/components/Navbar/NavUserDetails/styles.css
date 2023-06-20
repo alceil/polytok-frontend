@@ -8,7 +8,10 @@
   }
   .userid {
     position: relative;
-    bottom: 25px;
+    bottom: 28px;
+    right: .8rem;
+    font-size: .8rem;
+    font-weight: 200;
     color: #68778d;
   }
 
@@ -18,4 +21,9 @@
     border-radius: 50%;
     width: 50px;
     height: 45px;
+  }
+
+  .author-container{
+    display: flex;
+    justify-content: center;
   }

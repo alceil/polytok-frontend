@@ -5,6 +5,7 @@ const NavUserDetails = () => {
   const user = useSelector((state) => state.user.user);
 const {firstname,lastname,username,profilePic} =user;
   return (
+    <div className='author-container'>
     <div className="author_details">
     <img
       className="profilepic"
@@ -18,6 +19,7 @@ const {firstname,lastname,username,profilePic} =user;
       <span className="userid">@{username??""}</span>
     </div>
   </div>
+    </div>
   )
 }
 
