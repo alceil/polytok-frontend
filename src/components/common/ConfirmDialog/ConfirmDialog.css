@@ -1,0 +1,9 @@
+.confirm-dialog-popup{
+    padding:1rem;
+}
+
+.confirm-dialog-popup-bottom{
+display: flex;
+gap: 1rem;
+justify-content: flex-end;
+}
