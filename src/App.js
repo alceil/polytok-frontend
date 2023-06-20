@@ -1,7 +1,7 @@
 import './App.css';
 import LoginModal from './components/common/LoginModal';
 import SignUpModal from './components/common/SignUpModal';
-import EditProfile from './components/pages/Profile/UserProfile/EditProfile';
+import Snackbar from './components/common/Snackbar';
 import Navbar from './components/Navbar';
 import Home from './components/pages/Home';
 import { Route, Routes } from 'react-router-dom';
@@ -24,6 +24,7 @@ function App() {
     <LoginModal/>
     <SignUpModal/>
     <RightSideBar/>
+    <Snackbar/>
     
     </div>
   );

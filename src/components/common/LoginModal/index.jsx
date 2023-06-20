@@ -1,5 +1,6 @@
 import React,{useState,useMemo} from 'react'
 import {loginService, loginmodalclose } from '../../../redux/slices/users.slice'
+import {showSnackbar } from '../../../redux/slices/snackbar.slice'
 import Button from '../Button'
 import Modal from '../Modal'
 import TextInput from '../TextInput'
@@ -26,6 +27,9 @@ const LoginModal = () => {
   // Checking if form has any errors
   if (!isValid) return;
 
+  // Call showSnackbar with the desired type and message
+  dispatch(showSnackbar({ type: 'success', message: 'Snackbar message here' }));
+  
     dispatch(loginService(inputData))
     dispatch(loginmodalclose())
   } 
