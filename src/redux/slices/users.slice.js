@@ -275,6 +275,7 @@ export const userSlice = createSlice({
     },
     logoutBtnPressed: (state, action) => {
       localStorage.removeItem("login");
+      state.isUserLoggedIn= false;
       state.user = {
         _id:null,
         name: null,
@@ -286,16 +287,16 @@ export const userSlice = createSlice({
         posts: [],
         profilePic: ""
       };
-      state.loginStatus = false;
-      state.isError = false;
-      state.errorMessage = "";
-      state.userLoading = "not-loading" ;
-      state.profileLoading = false;
-      state.actionInProgress = false;
-      state.userProfile = {
-        user:{},
-        posts:[]
-      }
+      // state.loginStatus = false;
+      // state.isError = false;
+      // state.errorMessage = "";
+      // state.userLoading = "not-loading" ;
+      // state.profileLoading = false;
+      // state.actionInProgress = false;
+      // state.userProfile = {
+      //   user:{},
+      //   posts:[]
+      // }
     }
   },
   extraReducers: {
